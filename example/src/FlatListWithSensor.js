@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, Dimensions } from 'react-native';
 import { WindowSensorView } from 'react-native-window-sensor';
 
 const data = [
@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
   },
   box: {
     width: 60,
-    height: 60
+    height: 60,
+    marginLeft: 332
   },
 });
