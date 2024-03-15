@@ -70,11 +70,15 @@ public class WindowSensorViewManager extends SimpleViewManager<View> {
           int pos[] = new int[2];
           view.getLocationOnScreen(pos);
           ReactContext reactContext = (ReactContext)view.getContext();
+          int x1 = Math.round((pos[0] + view.getWidth()) / reactContext.getResources().getDisplayMetrics().density);
+          int y1 = Math.round((pos[1] + view.getHeight()) / reactContext.getResources().getDisplayMetrics().density);
           pos[1] = Math.round(pos[1] / reactContext.getResources().getDisplayMetrics().density);
           pos[0] = Math.round(pos[0] / reactContext.getResources().getDisplayMetrics().density);
           WritableMap event = Arguments.createMap();
           event.putInt("x", pos[0]);
           event.putInt("y", pos[1]);
+          event.putInt("x1", x1);
+          event.putInt("y1", y1);
           reactContext
             .getJSModule(RCTEventEmitter.class)
             .receiveEvent(view.getId(), "onCustomMeasure", event);

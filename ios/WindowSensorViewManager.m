@@ -27,7 +27,9 @@ RCT_EXPORT_METHOD(measureAbsolutePosition:(nonnull NSNumber*) reactTag) {
     CGRect absolutePosition = [view convertRect:view.bounds toView:nil];
     view.onCustomMeasure(@{
       @"x": @(absolutePosition.origin.x),
-      @"y": @(absolutePosition.origin.y)
+      @"y": @(absolutePosition.origin.y),
+      @"x1": @(CGRectGetMaxX(absolutePosition)),
+      @"y1": @(CGRectGetMaxY(absolutePosition))
     });
   }];
 }
