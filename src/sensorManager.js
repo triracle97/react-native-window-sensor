@@ -33,6 +33,14 @@ class _SensorManager {
       }
     })
   }
+
+  callMeasure(ids) {
+    ids.forEach(id => {
+      if (this.sensorMap[id]) {
+        this.sensorMap[id].measureFn();
+      }
+    });
+  }
 }
 
 const { width, height } = Dimensions.get('window');

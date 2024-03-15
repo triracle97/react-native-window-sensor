@@ -6,6 +6,7 @@ Sensor component
 
 ```sh
 npm install react-native-window-sensor
+cd ios && pod install
 ```
 
 ## Usage
@@ -15,12 +16,34 @@ import { WindowSensorView } from "react-native-window-sensor";
 
 // ...
 
-<WindowSensorView color="tomato" />
+const handleMeasure = (e) => {
+  console.log('4 corners', e.nativeEvent);
+}
+
+const handleOnViewPort = (e) => {
+  const {
+    intersectionAreaPercentage,
+    intersectionHeight,
+    intersectionWidth
+  } = e;
+}
+
+<WindowSensorView
+  screen={'screenName'}
+  id={`sensorId`}
+  onViewPort={handleOnViewPort} // this return intersectionArea, intersectionHeight and intersection Width of parent component
+  onCustomMeasure={handleMeasure} // this return 4 corners of parent component
+/>
 ```
 
-## Contributing
+Ask sensor to measure again:
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+```javascript
+import { SensorManager } from 'react-native-window-sensor';
+
+SensorManager.callMeasureForScreen(navigation.state.routeName);
+SensorManager.callMeasure(idsArray); // measure by id
+```
 
 ## License
 
