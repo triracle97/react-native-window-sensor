@@ -1,6 +1,10 @@
 # react-native-window-sensor
 
-Sensor component
+Sensor component to get components position on screen
+
+## Note:
+
+- When the view in a flatlist is not visible, the value of x and y can be both 0
 
 ## Installation
 
