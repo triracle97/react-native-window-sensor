@@ -38,13 +38,15 @@ export default function useSensorManager({
         );
         const intersectionAreaPercentage =
           (intersectionWidth * intersectionHeight) / ((x1 - x) * (y1 - y));
-        const isWidthFullyShow = Math(intersectionWidth === x1 - x);
-        const isHeightFullyShow = (intersectionHeight)
+        const isWidthFullyShow = (intersectionWidth === x1 - x);
+        const isHeightFullyShow = (intersectionHeight === y1 - y)
 
         onViewPort({
           intersectionAreaPercentage,
           intersectionHeight,
-          intersectionWidth
+          intersectionWidth,
+          isWidthFullyShow,
+          isHeightFullyShow
         });
       }
     }
